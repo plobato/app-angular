@@ -17,6 +17,7 @@ pipeline {
         }
         stage('Test') { 
             steps {
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 sh './jenkins/scripts/test.sh' 
             }
         }
