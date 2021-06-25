@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Test') { 
             steps {
-                sh 'npm start' 
+                sh 'ng serve --host 0.0.0.0 --disable-host-check ' 
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
         }
