@@ -6,6 +6,7 @@ pipeline {
     stage('Build') {
             steps {
                 sh 'npm install --cache=".tpp"'
+                sh 'npm install -g @angular/cli'
             }
         }
         stage('Test') { 
