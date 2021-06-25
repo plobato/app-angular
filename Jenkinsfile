@@ -11,7 +11,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install --cache=".pepe"'                
+                sh 'npm install --cache=".pepe"'
+                sh 'npm update'
             }
         }        
         stage('Deliver') { 
