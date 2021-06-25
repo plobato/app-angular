@@ -11,9 +11,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'apk --no-cache add g++ gcc libgcc libstdc++ linux-headers make python'
-                sh 'npm install --cache=".pepe"'
-                sh 'npm update'
+                sh 'npm install --cache=".pepe"'                
             }
         }        
         stage('Deliver') { 
