@@ -13,6 +13,7 @@ pipeline {
             steps {
                 sh 'apk --no-cache add g++ gcc libgcc libstdc++ linux-headers make python'
                 sh 'npm install --cache=".pepe" --quiet node-gyp -g'
+                sh 'npm update'
             }
         }
         stage('Test') { 
