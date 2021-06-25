@@ -15,13 +15,7 @@ pipeline {
                 sh 'npm install --cache=".pepe" --quiet node-gyp -g'
                 sh 'npm update'
             }
-        }
-        stage('Test') { 
-            steps {
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/test.sh' 
-            }
-        }
+        }        
         stage('Deliver') { 
             steps {
                 sh './jenkins/scripts/deliver.sh'
