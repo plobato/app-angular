@@ -1,23 +1,21 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:14-alpine'
-            args '-p 3000:3000' 
-        }
+  agent {
+    docker { 
+      image 'node:latest' 
+      args '-p 4200:4200'
     }
-    environment {
-        CI = 'true' 
-    }
-    stages {
-        stage('Build') {
+  }
+  stages {
+    stage('Build') {
             steps {
-                sh 'apk --no-cache add g++ gcc libgcc libstdc++ linux-headers make python'
-                sh 'npm install --cache=".pepe" --quiet node-gyp -g'
+                sh 'npm install --cache=".tpp"'
+                sh 'npm install -g @angular/cli'
             }
         }
         stage('Test') { 
             steps {
-                sh './jenkins/scripts/test.sh' 
+                sh 'ng serve --host 0.0.0.0 --disable-host-check ' 
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
         }
         stage('Deliver') { 
@@ -27,5 +25,5 @@ pipeline {
                 sh './jenkins/scripts/kill.sh' 
             }
         }
-    }
+  }
 }
