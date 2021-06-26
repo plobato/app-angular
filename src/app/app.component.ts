@@ -6,5 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'aplication';
+  title = 'app';
+  busqueda = 'tetazo';
+  posts: IPost[] = [];
+
+  constructor(){
+
+  }
+
+  get currentBusqueda(){
+    return JSON.stringify(this.busqueda);
+  }
+}
+
+interface IPost{
+  id: string;
+  title: string;
+  //body: string;
 }
