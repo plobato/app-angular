@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Test') { 
             steps {
-                sh 'ng serve' 
+                sh './jenkins/scripts/test.sh' 
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
         }
