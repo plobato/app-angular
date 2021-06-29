@@ -6,16 +6,10 @@ pipeline {
     }
   }
   stages {
-    stage('Build') {
+        stage('Build') {
             steps {
                 sh 'npm install --cache=".tpp"'
                 sh 'npm install -g @angular/cli'
-            }
-        }
-        stage('Test') { 
-            steps {
-                sh './jenkins/scripts/test.sh' 
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
         }
         stage('Deliver') { 
