@@ -30,7 +30,9 @@ stage('Login'){
 }   
   
  stage("Push Image to Docker Hub"){
+   steps {   
         sh 'docker push  pablojl/imagenes:v1'
+   }
     } 
   
    } 
