@@ -48,8 +48,8 @@ stage('Login'){
         remote.user = 'pablo'
         remote.password = 'pablo'
         remote.allowAnyHosts = true
-        sshPut remote: remote, from: 'k8s-spring-boot-deployment.yml', into: '.'
-        sshCommand remote: remote, command: "kubectl apply -f k8s-spring-boot-deployment.yml"
+        sshPut remote: remote, from: 'k8_angulo_deployment.yaml', into: '.'
+        sshCommand remote: remote, command: "kubectl apply -f k8_angulo_deployment.yaml"
         }  
        }   
     } 
