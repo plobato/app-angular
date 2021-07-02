@@ -41,6 +41,7 @@ stage('Login'){
     stage("SSH Into k8s Server") {
         steps {
         script {
+          def remote = [name: 'test', host: 'test.test.com', user: 'rao', password: "password123', allowAnyHosts: true]
         remote.name = 'K8S master'
         remote.host = '192.168.0.36'
         remote.user = 'pablo'
