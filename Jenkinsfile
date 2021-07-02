@@ -37,7 +37,7 @@ stage('Login'){
     
 
     stage("SSH Into k8s Server") {
-        
+        steps {
         def remote = [:]
         remote.name = 'K8S master'
         remote.host = '192.168.0.36'
@@ -56,6 +56,7 @@ stage('Login'){
           sshCommand remote: remote, command: "kubectl apply -f k8s-spring-boot-deployment.yml"
           }
         }
+       }   
     } 
     
     
