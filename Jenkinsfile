@@ -12,7 +12,7 @@ pipeline {
                 sh 'npm install -g @angular/cli'
             }
         }
- stage("Docker build"){
+ stage('Docker build'){
         sh 'docker version'
         sh 'docker build -t angulo .'
         sh 'docker image list'
