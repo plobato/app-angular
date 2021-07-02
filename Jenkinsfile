@@ -1,4 +1,9 @@
 pipeline {
+  
+  define {
+       def remote = [:] //empty map
+       def my_list //undefined shared variable
+  }
   agent {
     docker { 
       image 'node:latest' 
@@ -38,7 +43,7 @@ stage('Login'){
 
     stage("SSH Into k8s Server") {
         steps {
-        def remote = [:]
+        
         remote.name = 'K8S master'
         remote.host = '192.168.0.36'
         remote.user = 'pablo'
