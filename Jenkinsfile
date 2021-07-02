@@ -19,7 +19,7 @@ pipeline {
         sh 'docker version'
         sh 'docker build -t angulo .'
         sh 'docker image list'
-        sh 'docker tag angulo pablojl/imagenes:v1'
+        sh 'docker tag angulo pablojl/imagenes:latest'
    }
     }   
 
@@ -33,7 +33,7 @@ stage('Login'){
 
  stage("Push pero esta vezImage to Docker Hub"){
    steps {   
-        sh 'docker push  pablojl/imagenes:v1'
+        sh 'docker push  pablojl/imagenes:latest'
    }
     }
 
