@@ -1,9 +1,11 @@
-pipeline {
-  
-  define {
+ define {
        def remote = [:] //empty map
        def my_list //undefined shared variable
   }
+
+pipeline {
+  
+ 
   agent {
     docker { 
       image 'node:latest' 
