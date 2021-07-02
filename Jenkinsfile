@@ -1,8 +1,3 @@
- define {
-       def remote = [:] //empty map
-       def my_list //undefined shared variable
-  }
-
 pipeline {
   
  
@@ -53,7 +48,7 @@ stage('Login'){
         remote.allowAnyHosts = true
         sshPut remote: remote, from: 'k8s-spring-boot-deployment.yml', into: '.'
         sshCommand remote: remote, command: "kubectl apply -f k8s-spring-boot-deployment.yml"
-        
+        }  
        }   
     } 
     
