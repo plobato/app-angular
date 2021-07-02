@@ -48,4 +48,5 @@ pipeline {
           sshCommand remote: remote, command: "kubectl apply -f k8s-spring-boot-deployment.yml"
         }
     }
+   } 
 }
