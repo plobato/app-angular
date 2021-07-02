@@ -13,10 +13,12 @@ pipeline {
             }
         }
  stage('Push Image to Docker Hub'){
+   steps {
         sh 'docker version'
         sh 'docker build -t angulo .'
         sh 'docker image list'
         sh 'docker tag angulo pablojl/imagenes:v1'
+   }
     }        
   
   
