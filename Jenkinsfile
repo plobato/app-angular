@@ -43,11 +43,11 @@ pipeline {
    
    steps {
         sh 'docker version'
-        sh 'docker build -t angulo .'
+        sh 'docker build -t angulo:0.6.0 .'
 
         println "Next version is ${defaultValue}"
         sh 'docker image list'
-        sh "docker tag angulo pablojl/imagenes:${defaultValue}"
+        sh "docker tag angulo:0.6.0 pablojl/imagenes:${defaultValue}"
    }
     }   
 
@@ -85,8 +85,6 @@ stage('Login'){
         
         
         sshCommand remote: remote, command: "kubectl --record deployment.apps/angular-deployment set image deployment.v1.apps/angular-deployment angular=pablojl/imagenes:${defaultValue}"
-        sshCommand remote: remote, command: "echo pablo | sudo docker login -u pablojl -pLucas3949"
-        sshCommand remote: remote, command: "echo pablo | sudo docker pull pablojl/imagenes:${defaultValue}"
         sshCommand remote: remote, command: "kubectl apply -f k8_angulo_deployment.yaml"
         sshCommand remote: remote, command: "kubectl --record deployment.apps/angular-deployment set image deployment.v1.apps/angular-deployment angular=pablojl/imagenes:${defaultValue}"  
         }  
