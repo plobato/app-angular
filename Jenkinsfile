@@ -1,5 +1,5 @@
 def nextVersionFromGit(scope) {
-    def latestVersion = sh returnStdout: true, script: 'git describe --tags "$(git rev-list --tags=*.*.* --max-count=1 2> /dev/null)" 2> /dev/null || echo 0.0.0'
+    def latestVersion = sh returnStdout: true, script: 'git describe --tags "6a5ade690f94bd52e4d74abcedfa6b2620d71f43" || echo 0.0.0'
     def (major, minor, patch) = latestVersion.tokenize('.').collect { it.toInteger() }
     println "latestVersion: ${latestVersion}"
     def nextVersion
