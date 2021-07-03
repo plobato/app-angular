@@ -60,7 +60,7 @@ stage('Login'){
 
  stage("Push pero esta vezImage to Docker Hub"){
    steps {   
-        sh 'docker push  pablojl/imagenes:${defaultValue}'
+        sh "docker push  pablojl/imagenes:${defaultValue}"
    }
     }
 
@@ -80,7 +80,7 @@ stage('Login'){
         
         sshCommand remote: remote, command: "kubectl --record deployment.apps/angular-deployment set image deployment.v1.apps/angular-deployment angular=pablojl/imagenes"
         sshCommand remote: remote, command: "kubectl apply -f k8_angulo_deployment.yaml"
-        sshCommand remote: remote, command: "kubectl --record deployment.apps/angular-deployment set image deployment.v1.apps/angular-deployment angular=pablojl/imagenes:latest"  
+        sshCommand remote: remote, command: "kubectl --record deployment.apps/angular-deployment set image deployment.v1.apps/angular-deployment angular=pablojl/imagenes:${defaultValue}"  
         }  
        }   
     } 
