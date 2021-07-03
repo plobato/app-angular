@@ -79,8 +79,8 @@ stage('Login'){
         
         
         sshCommand remote: remote, command: "kubectl --record deployment.apps/angular-deployment set image deployment.v1.apps/angular-deployment angular=pablojl/imagenes:${defaultValue}"
-        sshCommand remote: remote, command: "docker login -u pablojl -pLucas3949"
-        sshCommand remote: remote, command: "docker pull pablojl/imagenes:${defaultValue}"
+        sshCommand remote: remote, command: "echo pablo | sudo docker login -u pablojl -pLucas3949"
+        sshCommand remote: remote, command: "echo pablo | sudo docker pull pablojl/imagenes:${defaultValue}"
         sshCommand remote: remote, command: "kubectl apply -f k8_angulo_deployment.yaml"
         sshCommand remote: remote, command: "kubectl --record deployment.apps/angular-deployment set image deployment.v1.apps/angular-deployment angular=pablojl/imagenes:${defaultValue}"  
         }  
