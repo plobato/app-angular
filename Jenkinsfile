@@ -15,9 +15,9 @@ def nextVersionFromGit(scope) {
     }
     nextVersion
 }
-
+def defaultValue = "0.0.0"
 pipeline {
-  def defaultValue = '0.0.0'
+  
  
   agent {
     docker { 
