@@ -27,11 +27,10 @@ pipeline {
       args '-p 4200:4200'
     }
   }
-  steps {
-    script{
+  script{
                   defaultValue = nextVersionFromGit('minor')
+              println "Next version is ${defaultValue}"                  
                 }  
-  }              
   stages {
         stage('Build') {
             steps {
@@ -44,6 +43,7 @@ pipeline {
             }
         }
  stage('Push Image to Docker Hub'){
+   println "Next version is ${defaultValue}"
    steps {
         sh 'docker version'
         sh 'docker build -t angulo .'
