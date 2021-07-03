@@ -30,7 +30,7 @@ pipeline {
             steps {
                 sh 'npm install --cache=".tpp"'
                 sh 'npm install -g @angular/cli'
-                {defaultValue} = nextVersionFromGit('minor')
+                defaultValue = nextVersionFromGit('minor')
                 println "Next version is ${defaultValue}"
             }
         }
