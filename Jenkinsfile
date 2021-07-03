@@ -1,5 +1,23 @@
+def nextVersionFromGit(scope) {
+    def latestVersion = sh returnStdout: true, script: 'git describe --tags "$(git rev-list --tags=*.*.* --max-count=1 2> /dev/null)" 2> /dev/null || echo 0.0.0'
+    def (major, minor, patch) = latestVersion.tokenize('.').collect { it.toInteger() }
+    def nextVersion
+    switch (scope) {
+        case 'major':
+            nextVersion = "${major + 1}.0.0"
+            break
+        case 'minor':
+            nextVersion = "${major}.${minor + 1}.0"
+            break
+        case 'patch':
+            nextVersion = "${major}.${minor}.${patch + 1}"
+            break
+    }
+    nextVersion
+}
+
 pipeline {
-  
+  def defaultValue = '0.0.0'
  
   agent {
     docker { 
@@ -12,6 +30,8 @@ pipeline {
             steps {
                 sh 'npm install --cache=".tpp"'
                 sh 'npm install -g @angular/cli'
+                defaultValue = nextVersionFromGit('minor')
+                println "Next version is ${defaultValue}"
             }
         }
  stage('Push Image to Docker Hub'){
@@ -19,7 +39,7 @@ pipeline {
         sh 'docker version'
         sh 'docker build -t angulo .'
         sh 'docker image list'
-        sh 'docker tag angulo pablojl/imagenes:latest'
+        sh 'docker tag angulo pablojl/imagenes:${defaultValue}'
    }
     }   
 
@@ -33,7 +53,7 @@ stage('Login'){
 
  stage("Push pero esta vezImage to Docker Hub"){
    steps {   
-        sh 'docker push  pablojl/imagenes:latest'
+        sh 'docker push  pablojl/imagenes:${defaultValue}'
    }
     }
 
