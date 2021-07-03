@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: angular
-          image: pablojl/imagenes:v1
+          image: pablojl/imagenes:latest
           imagePullPolicy: Always    
           ports:
             - containerPort: 80
