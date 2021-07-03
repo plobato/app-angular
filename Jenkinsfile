@@ -49,8 +49,12 @@ stage('Login'){
         remote.password = 'pablo'
         remote.allowAnyHosts = true
         sshPut remote: remote, from: 'k8_angulo_deployment.yaml', into: '.'
+        steps {
         sshCommand remote: remote, command: "kubectl apply -f k8_angulo_deployment.yaml"
+        }
+        steps {
           sshCommand remote: remote, command: "kubectl --record deployment.apps/angular-deployment set image deployment.v1.apps/angular-deployment angular=pablojl/imagenes:latest"
+        }  
         }  
        }   
     } 
