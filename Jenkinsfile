@@ -55,6 +55,11 @@ stage('Login'){
    steps {    
     withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
             sh 'docker login -u pablojl -p $PASSWORD'
+
+             script{
+                  defaultValue = nextVersionFromGit('minor')
+                }  
+             println "Next version EEEEEEEEEEEEEEEEEE is ${defaultValue}"            
        }
    }
 }   
