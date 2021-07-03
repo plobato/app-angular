@@ -15,7 +15,10 @@ def nextVersionFromGit(scope) {
     }
     nextVersion
 }
+steps {
 def defaultValue = nextVersionFromGit('minor')
+}
+
 pipeline {
   
  
