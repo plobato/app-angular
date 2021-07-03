@@ -56,6 +56,7 @@ stage('Login'){
         sshCommand remote: remote, command: "kubectl --record deployment.apps/angular-deployment set image deployment.v1.apps/angular-deployment angular=pablojl/imagenes"
         sshCommand remote: remote, command: "kubectl apply -f k8_angulo_deployment.yaml"
         sshCommand remote: remote, command: "kubectl --record deployment.apps/angular-deployment set image deployment.v1.apps/angular-deployment angular=pablojl/imagenes:latest"  
+        sshCommand remote: remote, command: "kubectl -n default rollout restart deployment angular-deployment"
         }  
        }   
     } 
