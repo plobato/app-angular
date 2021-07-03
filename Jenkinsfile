@@ -15,7 +15,7 @@ def nextVersionFromGit(scope) {
     }
     nextVersion
 }
-def defaultValue = "0.0.0"
+def defaultValue = nextVersionFromGit('minor')
 pipeline {
   
  
@@ -30,7 +30,6 @@ pipeline {
             steps {
                 sh 'npm install --cache=".tpp"'
                 sh 'npm install -g @angular/cli'
-                defaultValue = nextVersionFromGit('minor')
                 println "Next version is ${defaultValue}"
             }
         }
