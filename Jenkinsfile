@@ -27,10 +27,6 @@ pipeline {
       args '-p 4200:4200'
     }
   }
-  script{
-                  defaultValue = nextVersionFromGit('minor')
-              println "Next version is ${defaultValue}"                  
-                }  
   stages {
         stage('Build') {
             steps {
