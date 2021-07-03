@@ -39,10 +39,12 @@ pipeline {
             }
         }
  stage('Push Image to Docker Hub'){
-   println "Next version is ${defaultValue}"
+   
    steps {
         sh 'docker version'
         sh 'docker build -t angulo .'
+
+        println "Next version is ${defaultValue}"
         sh 'docker image list'
         sh 'docker tag angulo pablojl/imagenes:${defaultValue}'
    }
