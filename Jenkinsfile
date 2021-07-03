@@ -46,7 +46,7 @@ pipeline {
 
         println "Next version is ${defaultValue}"
         sh 'docker image list'
-        sh 'docker tag angulo pablojl/imagenes:${defaultValue}'
+        sh "docker tag angulo pablojl/imagenes:${defaultValue}"
    }
     }   
 
