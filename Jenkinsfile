@@ -46,7 +46,7 @@ stage('Login'){
         script {
           def remote = [name: 'test', host: 'test.test.com', user: 'rao', password: 'password123', allowAnyHosts: true]
                         remote.name = 'K8S master'
-        remote.host = '192.168.0.36'
+        remote.host = '192.168.0.38'
         remote.user = 'pablo'
         remote.password = 'pablo'
         remote.allowAnyHosts = true
